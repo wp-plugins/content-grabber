@@ -41,7 +41,6 @@ class cg_content_grabber extends WP_Widget {
 	 *
 	 */
 	public function widget( $args, $i ) {
-		
 		global $cg_posts;
 		if ( array_key_exists('before_widget', $args) ) echo $args['before_widget'];
 		?>
@@ -61,6 +60,13 @@ class cg_content_grabber extends WP_Widget {
 			'category__in' => is_array($i['cat_id'])?$i['cat_id']:'',
 		);
 		$cg_posts = new WP_Query( $args );
+		
+		if ( array_key_exists('before_widget', $args) ) echo $args['before_title'];
+			
+			echo $i['title'];
+			
+		if ( array_key_exists('after_widget', $args) ) echo $args['after_title'];
+		
 		
 		if($cg_posts->have_posts()):
 			?>
@@ -93,6 +99,14 @@ class cg_content_grabber extends WP_Widget {
         <div class="cg_table_holder">
             <table vspace="10">
                 <?php //post type ?>
+                <tr>
+                	<td>
+                      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+                    </td>
+                    <td>
+                        <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo isset($i['title'])?$i['title']:''; ?>" />   
+                    </td>
+                </tr>
                 <tr>
                     <td>
                       <label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Post Type:' ); ?></label>
@@ -248,6 +262,7 @@ font-size:14px;
 	public function update( $n_i, $o_i) {
 		
 		$i = array();
+		$i['title'] = ( ! empty( $n_i['title'] ) ) ? strip_tags( $n_i['title'] ) : '';
 		$i['post_type'] = ( ! empty( $n_i['post_type'] ) ) ? strip_tags( $n_i['post_type'] ) : 'post';
 		$i['post_per_page'] = ( ! empty( $n_i['post_per_page'] ) ) ? strip_tags( $n_i['post_per_page'] ) : '-1';
 		$i['order_by'] = ( ! empty( $n_i['order_by'] ) ) ? strip_tags( $n_i['order_by'] ) : 'category';
