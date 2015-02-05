@@ -76,6 +76,13 @@ class cg_content_grabber extends WP_Widget {
 				$cg_posts->the_post();
 				echo do_shortcode($i['post_loop_html']);
 			endwhile;
+			wp_reset_query();
+			?>
+            <div class="cg_posts_nav">
+            	<div class="cg_next_posts_nav"><?php next_posts_link();?></div>
+               <div class="cg_prev_posts_nav"><?php previous_posts_link();?></div>
+            </div>			
+			<?php
 			$cg_posts = '';
 			?>
 			</div>
@@ -128,7 +135,7 @@ class cg_content_grabber extends WP_Widget {
                 ?>
                 <tr>
                     <td>
-                        <label for="<?php echo $this->get_field_id( 'post_per_page' ); ?>"><?php _e( 'Post per page:' ); ?></label>
+                        <label for="<?php echo $this->get_field_id( 'post_per_page' ); ?>"><?php _e( 'Number of post(s):' ); ?></label>
                     </td>
                     <td>
                         <input type="text" id="<?php echo $this->get_field_id( 'post_per_page' ); ?>" name="<?php echo $this->get_field_name( 'post_per_page' ); ?>" value="<?php echo isset($i['post_per_page'])?$i['post_per_page']:''; ?>" />
