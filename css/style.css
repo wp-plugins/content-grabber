@@ -1,0 +1,8 @@
+.cg_table_holder table{
+    border-collapse: collapse;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
