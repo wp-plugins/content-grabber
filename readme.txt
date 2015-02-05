@@ -15,12 +15,12 @@ This plugin will create a widget in your widget panel, this widget will let you 
 
 Features:
 
-1) Chose post of any type that you want to grab
-2) Set how many posts you want to display per page
-3) Set how the posts should be ordered
-4) Set post status
-5) Set html template that the posts can use in loop to display
-6) Control the style for the loop html
+(1) Chose post of any type that you want to grab
+(2) Set how many posts you want to display per page
+(3) Set how the posts should be ordered
+(4) Set post status
+(5) Set html template that the posts can use in loop to display
+(6) Control the style for the loop html
 
 
 == Installation ==
@@ -32,5 +32,5 @@ Features:
 == Screenshots ==
 
 1. screenshot-1
-== Changelog ==
+
 
